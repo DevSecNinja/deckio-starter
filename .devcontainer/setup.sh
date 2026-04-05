@@ -11,8 +11,7 @@ git config --global --add safe.directory "$WORKSPACE"
 # ── Git initialisation ────────────────────────────────────────────────────────
 if [ ! -d ".git" ]; then
   echo "==> Initialising git repository..."
-  git init
-  git checkout -b main
+  git init -b main
 else
   echo "==> Git repository already initialised, skipping."
 fi
