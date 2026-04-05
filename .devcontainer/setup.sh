@@ -52,6 +52,6 @@ fi
 echo ""
 echo "================================================"
 echo "  DECKIO project ready!"
-echo "  The dev server is starting on port 5173."
+echo "  Run the 'Start DECKIO' task to start the dev server."
 echo "  Use GitHub Copilot Agent mode to build your deck."
 echo "================================================"

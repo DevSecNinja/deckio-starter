@@ -27,6 +27,17 @@
         "panel": "dedicated",
         "group": "dev"
       }
+    },
+    {
+      "label": "Setup DECKIO",
+      "type": "shell",
+      "command": "bash .devcontainer/setup.sh",
+      "group": "none",
+      "presentation": {
+        "reveal": "always",
+        "panel": "dedicated",
+        "group": "dev"
+      }
     }
   ]
 }
