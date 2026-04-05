@@ -19,13 +19,13 @@ fi
 # ── DECKIO scaffolding ────────────────────────────────────────────────────────
 # Only scaffold when no DECKIO project is present yet (no deck-engine dependency).
 if ! grep -q "deck-engine" package.json 2>/dev/null; then
-  if [ -t 0 ]; then
+  if [ "${CODESPACES:-}" != "true" ] && [ -t 0 ]; then
     echo "==> Scaffolding DECKIO project into current directory..."
     # `--yes` skips interactive prompts; `.` targets the current directory.
     npx --yes create-deckio@latest .
   else
-    echo "==> Non-interactive environment detected (e.g. Codespaces postCreateCommand), skipping scaffold."
-    echo "    Run '.devcontainer/setup.sh' manually in the terminal to scaffold the project."
+    echo "==> Non-interactive or Codespaces environment detected, skipping scaffold."
+    echo "    Run the 'Setup DECKIO' task or execute '.devcontainer/setup.sh' manually in the terminal to scaffold the project."
   fi
 else
   echo "==> DECKIO project already present, skipping scaffold."
