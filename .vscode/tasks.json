@@ -32,6 +32,11 @@
       "label": "Setup DECKIO",
       "type": "shell",
       "command": "bash .devcontainer/setup.sh",
+      "options": {
+        "env": {
+          "DECKIO_INTERACTIVE": "true"
+        }
+      },
       "group": "none",
       "presentation": {
         "reveal": "always",

@@ -19,7 +19,7 @@ fi
 # ── DECKIO scaffolding ────────────────────────────────────────────────────────
 # Only scaffold when no DECKIO project is present yet (no deck-engine dependency).
 if ! grep -q "deck-engine" package.json 2>/dev/null; then
-  if [ "${CODESPACES:-}" != "true" ] && [ -t 0 ]; then
+  if [ "${DECKIO_INTERACTIVE:-}" = "true" ] || ([ "${CODESPACES:-}" != "true" ] && [ -t 0 ]); then
     echo "==> Scaffolding DECKIO project into current directory..."
     # `--yes` skips interactive prompts; `.` targets the current directory.
     npx --yes create-deckio@latest .
