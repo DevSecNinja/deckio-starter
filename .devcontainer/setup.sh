@@ -16,6 +16,15 @@ else
   echo "==> Git repository already initialised, skipping."
 fi
 
+# ── Clone forked deck-engine ──────────────────────────────────────────────────
+FORK_DIR=".deck-engine"
+if [ ! -d "$FORK_DIR" ]; then
+  echo "==> Cloning forked deck-engine from DevSecNinja..."
+  git clone https://github.com/DevSecNinja/deck-engine.git "$FORK_DIR"
+else
+  echo "==> Forked deck-engine already cloned, skipping."
+fi
+
 # ── DECKIO scaffolding ────────────────────────────────────────────────────────
 # Only scaffold when no DECKIO project is present yet (no deck-engine dependency).
 if ! grep -q "deck-engine" package.json 2>/dev/null; then
@@ -23,6 +32,10 @@ if ! grep -q "deck-engine" package.json 2>/dev/null; then
     echo "==> Scaffolding DECKIO project into current directory..."
     # `--yes` skips interactive prompts; `.` targets the current directory.
     npx --yes create-deckio@latest .
+
+    # Point @deckio/deck-engine to the local fork instead of the npm registry.
+    echo "==> Switching @deckio/deck-engine to local fork..."
+    npm pkg set "dependencies.@deckio/deck-engine=file:$FORK_DIR/packages/deck-engine"
   else
     echo "==> Non-interactive or Codespaces environment detected, skipping scaffold."
     echo "    Run the 'Setup DECKIO' task or execute '.devcontainer/setup.sh' manually in the terminal to scaffold the project."

@@ -1,5 +1,6 @@
 node_modules
 dist
 .vite
+.deck-engine/
 .github/eyes/
 assets/
